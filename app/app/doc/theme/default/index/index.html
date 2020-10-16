@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>文档系统</title>
+    {include file="block/headerCssJs" /}
+    <link href="__MODULE_STATIC_THEME__/css/index.css?v={:config('doc.version')}" rel="stylesheet"/>
+</head>
+<body>
+{include file="block/header" /}
+<div class="content">
+    <ul>
+        {foreach $docs as $v}
+        {if $v['member']}
+        <li>
+            <a class="item" href="{:url(DOC_BASE.$v['member']['name'].'/'.$v['name'], [], false)}" target="_blank">
+                <div class="box">
+                    <div class="title">{$v['title']}</div>
+                </div>
+            </a>
+        </li>
+        {/if}
+        {/foreach}
+    </ul>
+</div>
+<script src="__PUBLIC_PACK__/jquery/jquery-3.4.1.min.js?v={:config('doc.version')}"></script>
+</body>
+</html>

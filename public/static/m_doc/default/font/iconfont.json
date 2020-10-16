@@ -1,0 +1,30 @@
+{
+  "id": "2037932",
+  "name": "文档系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "584067",
+      "name": "书册中心",
+      "font_class": "shuce",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "16516763",
+      "name": "书籍",
+      "font_class": "shuji",
+      "unicode": "e6b7",
+      "unicode_decimal": 59063
+    },
+    {
+      "icon_id": "13412243",
+      "name": "文件类型 - 文本文档",
+      "font_class": "doc",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    }
+  ]
+}

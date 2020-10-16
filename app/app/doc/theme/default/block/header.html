@@ -1,0 +1,33 @@
+<div class="header">
+    <div class="wrap toolbar">
+        <div class="logo-info fl">
+            <img class="logo-pic" src="__MODULE_STATIC_THEME__/images/logo.png?v={:config('doc.version')}">
+            <span>Doc Online</span>
+        </div>
+        <div class="title fl"><a href="/doc">广场</a></div>
+        <ul class="member layui-nav fr">
+            {php} $login = session('member');$redirect = urlencode((string)request()->domain().'/'.DOC_BASE); {/php}
+            {if isset($login) && isset($login['uid'])}
+            <li class="layui-nav-item layuihi-setting">
+                <a href="/{:DOC_BASE}author"><i class="icon iconfont iconshuji"> </i></a>
+            </li>
+            {/if}
+            <li class="layui-nav-item layuihi-setting">
+                {if isset($login) && isset($login['uid'])}
+<!--                <a href="javascript:;">{$login['nick']?:$login['account']}<span class="layui-nav-more"></span></a>-->
+                <a href="javascript:;"><img class="headpic" src="__MODULE_STATIC_THEME__/images/headpic.png?v={:config('doc.version')}"/><span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd> <a href="{:url('author/account', [], false)}">账户</a> </dd>
+                    <dd> <a href="/member/logout?from={$redirect}">退出</a> </dd>
+                </dl>
+                {else}
+                <a href="javascript:;">会员<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd> <a href="/member/login?from={$redirect}">登陆</a> </dd>
+                    <dd> <a href="/member/regist?from={$redirect}">注册</a> </dd>
+                </dl>
+                {/if}
+            </li>
+        </ul>
+    </div>
+</div>

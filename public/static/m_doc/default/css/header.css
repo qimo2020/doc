@@ -1,0 +1,106 @@
+body{
+    overflow-x: hidden;
+    font-family: Helvetica Neue,NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,Microsoft Yahei,WenQuanYi Micro Hei,Arial,Helvetica,sans-serif;
+    font-size:14px;
+    margin: 0;
+}
+h1, h2, h3, h4, h5{
+    margin:0;
+    padding:0;
+}
+*, :after, :before{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    outline:none;
+    background: none;
+    text-decoration: none;
+    box-sizing: inherit;
+}
+.fr{float: right}
+.fl{float: left}
+.header{
+    height:55px;
+    line-height: 55px;
+   border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+.wrap{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header .toolbar{
+    height: 55px;
+    padding: 0 .8em;
+    align-items: stretch;
+}
+.header .toolbar .icon{
+    font-size: 1.33rem;
+    display: block;
+}
+.header .toolbar .icon.iconshuji:before{
+    color: #777;
+}
+.header .toolbar .logo-info{
+    color:#21ba45;
+    font-size: 20px;
+    overflow: hidden;
+    height: 100%;
+}
+.header .toolbar .logo-info img{
+    height: 1.3em;
+    vertical-align: middle;
+    display: block;
+    float: left;
+    padding: 13px 0;
+}
+.header .toolbar .logo-info span{
+    display: block;
+    float: left;
+    margin-left: 10px;
+}
+.header .toolbar .title{
+    color: #333;
+    line-height: 55px;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+.header .toolbar .title a{
+    padding: 0.5rem 1rem;
+}
+.header .toolbar .title a:hover{
+    background-color: #eee;
+    color:#000;
+    border-radius: 3px;
+}
+.header .member .headpic{
+   width: 2em;
+    height: 2em;
+}
+.layui-nav{
+    background-color: #fff;
+    height: 54px;
+    padding: 0;
+}
+.layui-nav .layui-nav-item a{
+    color:#666;
+    font-weight: 700;
+    cursor: pointer;
+    pointer-events: auto;
+}
+.layui-nav .layui-nav-item a:hover{
+    color:#333;
+}
+.layui-nav .layui-nav-item{
+    line-height: 55px;
+}
+.layui-nav .layui-nav-more{
+    border-top-color:#666;
+    border-width: 5px;
+}
+.layui-nav .layui-nav-mored,.layui-nav-itemed>a .layui-nav-more{
+    margin-top:-9px;
+    border-style:dashed dashed solid;
+    border-color:transparent transparent #666
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{if $member}修改{else}创建{/if}账户</title>
+    {include file="block/headerCssJs" /}
+    <link href="__MODULE_STATIC_THEME__/css/author.css?v={:config('doc.version')}" rel="stylesheet"/>
+</head>
+<body>
+{include file="block/header" /}
+<div class="wrap-bar">
+    <div class="tip-bar">
+        <div class="tip-title">{if $member}修改{else}创建{/if}账户</div>
+    </div>
+</div>
+<div class="content">
+    <div class="add-box">
+        <form class="layui-form" onsubmit="return false">
+            <div class="layui-form-item">
+                <label class="layui-form-label">账户名（注意：不支持更改）</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required  lay-verify="required" placeholder="3-60个字符,仅允许填入数字、字母、下划线、破折号" autocomplete="off" class="layui-input{if $member} layui-disabled{/if}" value="{if $member}{$member['name']}{/if}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <div class="layui-input-block">
+                    {if $member}
+                    <input type="hidden" name="id" value="{$member['id']}"/>
+                    {/if}
+                    <button class="layui-btn" lay-submit lay-filter="formPost">{if $member}修改{else}创建{/if}</button>
+                    <a class="layui-btn layui-btn-primary" href="{:url('/'.DOC_BASE.'author',[],false)}">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use(['form','jquery'], function(){
+        let $ = layui.jquery, form = layui.form;
+        form.on('submit(formPost)', function(data){
+            let that = $(this),_form = $(data.form),tipWord='{if $member}修改{else}创建{/if}',op='account';
+            that.addClass('layui-btn-disabled').prop('disabled', true).text(tipWord+'中...');
+            $.ajax({
+                type: "POST",
+                url: '/{:DOC_BASE}author/'+op,
+                data: _form.serialize(),
+                success: function(res) {
+                    if(res.code == 1){
+                        that.removeClass("layui-btn-disabled").text('已'+tipWord);
+                        setTimeout(function(){
+                            window.location.href = '/{:DOC_BASE}author';
+                        }, 2500);
+                    }else{
+                        layer.msg(res.msg);
+                        setTimeout(function(){
+                            that.removeClass("layui-btn-disabled").text(tipWord).prop('disabled', false);
+                        }, 1000);
+                    }
+                }
+            })
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
