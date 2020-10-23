@@ -2,8 +2,6 @@
 namespace app\doc\api;
 defined('IN_SYSTEM') or die('Access Denied');
 use app\common\controller\Common;
-use app\doc\model\DocDetail;
-
 class Detail extends Common
 {
 
@@ -19,16 +17,15 @@ class Detail extends Common
  	* @test 0
  	*/
     public function index(){
-//        $member = session('member');
-//        if (!$member) {
-//            return json(['code'=>0, 'msg'=>'未登录']);
-//        }
-
+        $member = session('member');
+        if (!$member) {
+            return json(['code'=>0, 'msg'=>'未登录']);
+        }
         $params = $this->request->param();
         if(!isset($params['iid']) || !is_numeric($params['iid'])){
             return json(['code'=>0, 'msg'=>'param error']);
         }
-        $detail = DocDetail::where('cid', $params['iid'])->find();
+        $detail = \app\doc\model\DocDetail::where('cid', $params['iid'])->find();
         $result = $detail === null ? ['code'=>0, 'msg'=>'not found'] : ['code'=>1, 'data'=>$detail];
         return json($result);
     }

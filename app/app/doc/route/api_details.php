@@ -1,4 +1,4 @@
 <?php
 use think\facade\Route;
 
-Route::post('api/details/index', 'api/details/index');	//默认;
+Route::rule('api/details/index', 'api/details/index');	//默认;

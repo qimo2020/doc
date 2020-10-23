@@ -2,8 +2,6 @@
 namespace app\doc\api;
 defined('IN_SYSTEM') or die('Access Denied');
 use app\common\controller\Common;
-use app\doc\model\DocDetail;
-
 class Details extends Common
 {
 
@@ -23,7 +21,7 @@ class Details extends Common
         if(!isset($params['iid']) || !is_numeric($params['iid'])){
             return json(['code'=>0, 'msg'=>'param error']);
         }
-        $detail = DocDetail::where('cid', $params['iid'])->find();
+        $detail = \app\doc\model\DocDetail::where('cid', $params['iid'])->find();
         $result = $detail === null ? ['code'=>0, 'msg'=>'not found'] : ['code'=>1, 'data'=>['id'=>$detail['cid'], 'content'=>$detail['content']]];
         return json($result);
     }
